@@ -91,6 +91,7 @@ namespace FinancialPortalAPI.Controllers
         /// <param name="id">The PK of the household</param>
         /// <returns>Updates the data for the household by Id</returns>
         [Route("UpdateHouseholdDataById")]
+        [HttpPut]
         public int UpdateHouseholdDataById(int id)
         {
             //var json = JsonConvert.SerializeObject(await db.UpdateHouseholdDataById(id));

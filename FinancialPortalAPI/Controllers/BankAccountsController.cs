@@ -96,6 +96,8 @@ namespace FinancialPortalAPI.Controllers
         /// <param name="warningBalance">This is the warning balance of the account when it gets low on funds</param>
         /// <param name="accountType">This is the account type of the account</param>
         /// <returns>Update the bank account information</returns>
+       [Route("UpdateBankDataById")]
+       [HttpPut]
         public int UpdateBankDataById(int hId, string owner, string name, decimal startingBalance, decimal currentBalance, decimal warningBalance, AccountType accountType)
         {
             return db.UpdateBankDataById(hId, owner, name, startingBalance, currentBalance, warningBalance, accountType);

@@ -76,6 +76,8 @@ namespace FinancialPortalAPI.Controllers
         /// <param name="budgetName">The name of the budget</param>
         /// <param name="currentAmount">The current amount the user inputs</param>
         /// <returns>Create a single budget</returns>
+        [Route("UpdateBudgetDataById")]
+        [HttpPut]
         public int UpdateBudgetDataById(int hId, string owner, string budgetName, decimal currentAmount)
         {
             return db.UpdateBudgetDataById(hId, owner, budgetName, currentAmount);

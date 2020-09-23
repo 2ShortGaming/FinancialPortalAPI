@@ -83,6 +83,8 @@ namespace FinancialPortalAPI.Controllers
         /// <param name="amount">The amount of the transaction</param>
         /// <param name="memo">What the purchase was made for</param>
         /// <returns>Update a transaction</returns>
+       [Route("UpdateTransactionDataById")]
+       [HttpPut]
         public int UpdateTransactionDataById(int id, int aId, int biId, string owner, TransactionType transactionType, decimal amount, string memo)
         {
             return db.UpdateTransactionDataById(id, aId, biId, owner, transactionType, amount, memo);

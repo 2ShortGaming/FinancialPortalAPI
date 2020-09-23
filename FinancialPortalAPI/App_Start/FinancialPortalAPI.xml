@@ -1,0 +1,1184 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FinancialPortalAPI</name>
+    </assembly>
+    <members>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:FinancialPortalAPI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:FinancialPortalAPI.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:FinancialPortalAPI.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:FinancialPortalAPI.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:FinancialPortalAPI.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:FinancialPortalAPI.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,FinancialPortalAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,FinancialPortalAPI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:FinancialPortalAPI.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},FinancialPortalAPI.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(FinancialPortalAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,FinancialPortalAPI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:FinancialPortalAPI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FinancialPortalAPI.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:FinancialPortalAPI.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:FinancialPortalAPI.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="T:FinancialPortalAPI.Controllers.BankAccountsController">
+            <summary>
+            The Bank account controller for the financial portal
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BankAccountsController.GetAllBankData">
+            <summary>
+            Returns all bank account data
+            </summary>
+            <returns>Returns all bank account data</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BankAccountsController.GetBankDataById(System.Int32)">
+            <summary>
+            Returns bank data for a single account
+            </summary>
+            <param name="id">FK for the bank account</param>
+            <returns>Returns bank data for a single account</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BankAccountsController.DeleteBankData(System.Int32)">
+            <summary>
+            Delete a single bank account
+            </summary>
+            <param name="id">The PK of the bank account</param>
+            <returns>Delete a single bank account by Id</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BankAccountsController.InsertBankData(System.Int32,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,FinancialPortalAPI.Enums.AccountType)">
+            <summary>
+            Create a single bank account
+            </summary>
+            <param name="hId">The PK for the bank account</param>
+            <param name="owner">The owner of the account</param>
+            <param name="name">The name of the account the user provided</param>
+            <param name="startingBalance">The starting balance the user inputs</param>
+            <param name="currentBalance">This is the current balance of the account</param>
+            <param name="warningBalance">This is the warning balance of the account when it gets low on funds</param>
+            <param name="accountType">This is the account type of the account</param>
+            <returns>Create a single bank account</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BankAccountsController.GetAllBankAndTransactionData(System.Int32)">
+            <summary>
+            Get all bank and transaction data
+            </summary>
+            <param name="id">The FK of the bank to the transaction data</param>
+            <returns>Returns all bank and transaction data</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BankAccountsController.UpdateBankDataById(System.Int32,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,FinancialPortalAPI.Enums.AccountType)">
+            <summary>
+            Update the bank account information
+            </summary>
+            <param name="hId">FK for the bank account</param>
+            <param name="name">The name of the account the user provided</param>
+            <param name="owner">The owner of the account</param>
+            <param name="startingBalance">The starting balance the user inputs</param>
+            <param name="currentBalance">This is the current balance of the account</param>
+            <param name="warningBalance">This is the warning balance of the account when it gets low on funds</param>
+            <param name="accountType">This is the account type of the account</param>
+            <returns>Update the bank account information</returns>
+        </member>
+        <member name="T:FinancialPortalAPI.Controllers.BudgetItemsController">
+            <summary>
+            This is the Budget Item controller for the financial portal
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BudgetItemsController.GetAllBudgetItemData">
+            <summary>
+            Returns all budget item data
+            </summary>
+            <returns>Returns all budget item data</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BudgetItemsController.GetBudgetItemById(System.Int32)">
+            <summary>
+            Returns budget item data for a single account
+            </summary>
+            <param name="id">FK for the budget item</param>
+            <returns>Returns budget item data for a single account</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BudgetItemsController.DeleteBudgetItemData(System.Int32)">
+            <summary>
+            Delete a single budget item
+            </summary>
+            <param name="id">The PK of the budget item</param>
+            <returns>Delete a single budget by Id item</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BudgetItemsController.InsertBudgetItemData(System.Int32,System.String,System.Decimal,System.Decimal)">
+            <summary>
+            Create a single budget item
+            </summary>
+            <param name="bId">The PK for the budget item</param>
+            <param name="itemName">The name of the budget item</param>
+            <param name="targetAmount">Target amount of the budget item</param>
+            <param name="currentAmount">The current amount the user inputs</param>
+            <returns>Create a single budget item</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BudgetItemsController.UpdateBudgetItemDataById(System.Int32,System.String,System.Decimal,System.Decimal)">
+            <summary>
+            Create a single budget item
+            </summary>
+            <param name="bId">The PK for the budget item</param>
+            <param name="itemName">The name of the budget item</param>
+            <param name="targetAmount">Target amount of the budget item</param>
+            <param name="currentAmount">The current amount the user inputs</param>
+            <returns>Create a single budget item</returns>
+        </member>
+        <member name="T:FinancialPortalAPI.Controllers.BudgetsController">
+            <summary>
+            This is the Budget controller for the financial portal
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BudgetsController.GetAllBudgetData">
+            <summary>
+            Returns all budget data
+            </summary>
+            <returns>Returns all budget data</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BudgetsController.GetBudgetDataById(System.Int32)">
+            <summary>
+            Returns budget data for a single account
+            </summary>
+            <param name="id">FK for the budget</param>
+            <returns>Returns budget data for a single account</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BudgetsController.DeleteBudgetData(System.Int32)">
+            <summary>
+            Delete a single budget
+            </summary>
+            <param name="id">The PK of the budget</param>
+            <returns>Delete a single budget by Id</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BudgetsController.InsertBudgetData(System.Int32,System.String,System.String,System.Decimal)">
+            <summary>
+            Create a single budget
+            </summary>
+            <param name="hId">The PK for the budget</param>
+            <param name="owner">The owner of the account</param>
+            <param name="budgetName">The name of the budget</param>
+            <param name="currentAmount">The current amount the user inputs</param>
+            <returns>Create a single budget</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.BudgetsController.UpdateBudgetDataById(System.Int32,System.String,System.String,System.Decimal)">
+            <summary>
+            Create a single budget
+            </summary>
+            <param name="hId">The PK for the budget</param>
+            <param name="owner">The owner of the account</param>
+            <param name="budgetName">The name of the budget</param>
+            <param name="currentAmount">The current amount the user inputs</param>
+            <returns>Create a single budget</returns>
+        </member>
+        <member name="T:FinancialPortalAPI.Controllers.HouseholdsController">
+            <summary>
+            Controller for the Household
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.HouseholdsController.GetAllHouseholdData">
+            <summary>
+            Endpoint to return all household data
+            </summary>
+            <returns>List of all household data</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.HouseholdsController.GetDataAsJson">
+            <summary>
+            Endpoint to return all household data
+            </summary>
+            <returns>List of all household data by Json</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.HouseholdsController.GetHouseholdById(System.Int32)">
+            <summary>
+            Returns the information for a single household
+            </summary>
+            <param name="id">The Pk of the household you want to view</param>
+            <returns>Single household for model</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.HouseholdsController.GetHouseId(System.Int32)">
+            <summary>
+            Returns the information for a single household by Json
+            </summary>
+            <param name="id">The PK of the household you want to view</param>
+            <returns>Single household for model by Json</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.HouseholdsController.GetDeletedHHData(System.Int32)">
+            <summary>
+            Soft delete of a household by Id
+            </summary>
+            <param name="id">The PK of the household you want to view</param>
+            <returns>Soft delete of a household by Json</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.HouseholdsController.GetHouseholdAndChildData(System.Int32)">
+            <summary>
+            The household and child data
+            </summary>
+            <param name="id">The PK of the household you want to view</param>
+            <returns>Returns all household data with its child data by Json</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.HouseholdsController.UpdateHouseholdDataById(System.Int32)">
+            <summary>
+            Update data for household by Id
+            </summary>
+            <param name="id">The PK of the household</param>
+            <returns>Updates the data for the household by Id</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.HouseholdsController.InsertHouseholdData(System.String,System.String)">
+            <summary>
+            Create data for a household
+            </summary>
+            <returns>Create data for a household</returns>
+        </member>
+        <member name="T:FinancialPortalAPI.Controllers.TransactionsController">
+            <summary>
+            This is the transaction controller for the financial portal
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.TransactionsController.GetAllTransactionData">
+            <summary>
+            Returns all Transaction data
+            </summary>
+            <returns>Returns all Transaction data</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.TransactionsController.GetTransactionDataById(System.Int32)">
+            <summary>
+            Returns Transaction data for a single account
+            </summary>
+            <param name="id">FK for the Transaction</param>
+            <returns>Returns Transaction data for a single account</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.TransactionsController.DeleteTransactionData(System.Int32)">
+            <summary>
+            Delete a single Transaction
+            </summary>
+            <param name="id">The PK of the Transaction</param>
+            <returns>Delete a single Transaction by Id</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.TransactionsController.InsertTransactionData(System.Int32,System.Int32,System.String,FinancialPortalAPI.Enums.TransactionType,System.Decimal,System.String)">
+            <summary>
+            Create a transaction
+            </summary>
+            <param name="aId">Account Id tied to the transaction</param>
+            <param name="biId">The budget item id tied to the transaction</param>
+            <param name="owner">The owner that created the transaction</param>
+            <param name="transactionType">The transaction type</param>
+            <param name="amount">The amount of the transaction</param>
+            <param name="memo">What the purchase was made for</param>
+            <returns>Create a transaction</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Controllers.TransactionsController.UpdateTransactionDataById(System.Int32,System.Int32,System.Int32,System.String,FinancialPortalAPI.Enums.TransactionType,System.Decimal,System.String)">
+            <summary>
+            Update a transaction
+            </summary>
+            <param name="id">FK of the transaction</param>
+            <param name="aId">Account Id tied to the transaction</param>
+            <param name="biId">The budget item id tied to the transaction</param>
+            <param name="owner">The owner that created the transaction</param>
+            <param name="transactionType">The transaction type</param>
+            <param name="amount">The amount of the transaction</param>
+            <param name="memo">What the purchase was made for</param>
+            <returns>Update a transaction</returns>
+        </member>
+        <member name="T:FinancialPortalAPI.Models.APIDbContext">
+            <summary>
+            The model for the Database for the financial portal
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.#ctor">
+            <summary>
+            The connection string to the database
+            </summary>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.GetAllHouseholdData">
+            <summary>
+            Returns all household data for all households
+            </summary>
+            <returns>All data for each household</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.GetHouseholdById(System.Int32)">
+            <summary>
+            Returns data for single household by Id
+            </summary>
+            <param name="id">The PK of the household you want to view</param>
+            <returns>Returns data for household by Id</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.DeleteHouseholdDataById(System.Int32)">
+            <summary>
+            Delete a single household
+            </summary>
+            <param name="id">The PK of the household</param>
+            <returns>Delete a single household by Id</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.GetHouseholdAndChildData(System.Int32)">
+            <summary>
+            Returns all household and child data
+            </summary>
+            <param name="id">The PK of the household</param>
+            <returns>Returns all house and child data for a household</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.UpdateHouseholdDataById(System.Int32)">
+            <summary>
+            Update data for a single household
+            </summary>
+            <param name="hId">The PK for the household</param>
+            <returns>Update data for a single household by Id</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.InsertHouseholdData(System.String,System.String)">
+            <summary>
+            Create a new household
+            </summary>
+            <returns>Create a new household</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.GetAllBankData">
+            <summary>
+            Returns all bank data for all accounts
+            </summary>
+            <returns>Returns all bank data</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.GetBankDataById(System.Int32)">
+            <summary>
+            Returns bank data for a single account
+            </summary>
+            <param name="id">FK for the bank account</param>
+            <returns>Returns bank data for a single account</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.DeleteBankDataById(System.Int32)">
+            <summary>
+            Delete a single bank account
+            </summary>
+            <param name="id">The PK for the Bank Account</param>
+            <returns>Delete a single bank account by Id</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.InsertBankData(System.Int32,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,FinancialPortalAPI.Enums.AccountType)">
+            <summary>
+            Create a new bank account
+            </summary>
+            <param name="hId">The PK for the household</param>
+            <param name="name">The name of the bank account</param>
+            <param name="owner">The owner of  the bank account</param>
+            <param name="startingBalance">This is the starting balance of the account the user inputs</param>
+            <param name="currentBalance">This is the current balance of the account</param>
+            <param name="warningBalance">This is the warning balance of the account when it gets low on funds</param>
+            <param name="accountType">This is the account type of the account</param>
+            <returns>Create a new bank account by the user</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.UpdateBankDataById(System.Int32,System.String,System.String,System.Decimal,System.Decimal,System.Decimal,FinancialPortalAPI.Enums.AccountType)">
+            <summary>
+            Update a bank account by Id
+            </summary>
+            <param name="hId">The PK for the household</param>
+            <param name="name">The name of the bank account</param>
+            <param name="owner">The owner of  the bank account</param>
+            <param name="startingBalance">This is the starting balance of the account the user inputs</param>
+            <param name="currentBalance">This is the current balance of the account</param>
+            <param name="warningBalance">This is the warning balance of the account when it gets low on funds</param>
+            <param name="accountType">This is the account type of the account</param>
+            <returns>Update a bank account by Id</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.GetBankAndTransactionData(System.Int32)">
+            <summary>
+            Get all bank and transaction data
+            </summary>
+            <param name="id">FK of the bank account</param>
+            <returns>Return all bank and transaction data</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.GetAllBudgetData">
+            <summary>
+            Returns all budget data
+            </summary>
+            <returns>Returns all budget data</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.DeleteBudgetDataById(System.Int32)">
+            <summary>
+            Delete a single budget from a household
+            </summary>
+            <param name="id">FK for the budget</param>
+            <returns>Delete a single budget for a household</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.GetBudgetDataById(System.Int32)">
+            <summary>
+            Returns a single budget for a household
+            </summary>
+            <param name="id">FK for the budget</param>
+            <returns></returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.UpdateBudgetDataById(System.Int32,System.String,System.String,System.Decimal)">
+            <summary>
+            Update the budget data by Id
+            </summary>
+            <param name="hId">FK for the budget</param>
+            <param name="owner">the owner that created the budget</param>
+            <param name="budgetName">The name of the budget</param>
+            <param name="currentAmount">Current amount for the budget</param>
+            <returns>Update the budget data by Id</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.InsertBudgetData(System.Int32,System.String,System.String,System.Decimal)">
+            <summary>
+            Create the budget data by Id
+            </summary>
+            <param name="hId">FK for the budget</param>
+            <param name="owner">the owner that created the budget</param>
+            <param name="budgetName">The name of the budget</param>
+            <param name="currentAmount">Current amount for the budget</param>
+            <returns>Create the budget data by Id</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.GetAllBudgetItemData">
+            <summary>
+            Returns all budget item data
+            </summary>
+            <returns>Returns all budget item data</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.GetBudgetItemById(System.Int32)">
+            <summary>
+            Returns a single budget item
+            </summary>
+            <param name="id">Fk for the budget item</param>
+            <returns>Returns a single budget item</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.InsertBudgetItemData(System.Int32,System.String,System.Decimal,System.Decimal)">
+            <summary>
+            Create a budget item for household
+            </summary>
+            <param name="bId">Fk for the budget Id</param>
+            <param name="itemName">Item name for budget item</param>
+            <param name="targetAmount">Target amount for the budget item</param>
+            <param name="currentAmount">Current amount for the budget item</param>
+            <returns>Create a budget item for household</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.UpdateBudgetItemDataById(System.Int32,System.String,System.Decimal,System.Decimal)">
+            <summary>
+            Update a budget item for household
+            </summary>
+            <param name="bId">Fk for the budget Id</param>
+            <param name="itemName">Item name for budget item</param>
+            <param name="targetAmount">Target amount for the budget item</param>
+            <param name="currentAmount">Current amount for the budget item</param>
+            <returns>Update a budget item for household</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.DeleteBudgetItemDataById(System.Int32)">
+            <summary>
+            Delete a single budget item
+            </summary>
+            <param name="id">FK of the budget item</param>
+            <returns>Delete a single budget item</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.GetAllTransactionData">
+            <summary>
+            Returns all transactions for household
+            </summary>
+            <returns>Returns all transaction for household</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.GetTransactionDataById(System.Int32)">
+            <summary>
+            Returns a single transaction by Id
+            </summary>
+            <param name="id">FK for the transaction</param>
+            <returns>Returns a single transaction by Id</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.InsertTransactionData(System.Int32,System.Int32,System.String,FinancialPortalAPI.Enums.TransactionType,System.Decimal,System.String)">
+            <summary>
+            Create a transaction
+            </summary>
+            <param name="aId">Account Id tied to the transaction</param>
+            <param name="biId">The budget item id tied to the transaction</param>
+            <param name="owner">The owner that created the transaction</param>
+            <param name="transactionType">The transaction type</param>
+            <param name="amount">The amount of the transaction</param>
+            <param name="memo">What the purchase was made for</param>
+            <returns>Create a transaction</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.UpdateTransactionDataById(System.Int32,System.Int32,System.Int32,System.String,FinancialPortalAPI.Enums.TransactionType,System.Decimal,System.String)">
+            <summary>
+            Update a transaction
+            </summary>
+            <param name="id">FK of the transaction</param>
+            <param name="aId">Account Id tied to the transaction</param>
+            <param name="biId">The budget item id tied to the transaction</param>
+            <param name="owner">The owner that created the transaction</param>
+            <param name="transactionType">The transaction type</param>
+            <param name="amount">The amount of the transaction</param>
+            <param name="memo">What the purchase was made for</param>
+            <returns>Update a transaction</returns>
+        </member>
+        <member name="M:FinancialPortalAPI.Models.APIDbContext.DeleteTransactionDataById(System.Int32)">
+            <summary>
+            Delete a single transaction
+            </summary>
+            <param name="id">The FK for the transaction</param>
+            <returns>Delete a single transaction</returns>
+        </member>
+        <member name="T:FinancialPortalAPI.Models.BankAccount">
+            <summary>
+            The model for the Bank Account unit in the financial portal
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BankAccount.Id">
+            <summary>
+            The FK of the Bank account
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BankAccount.HouseholdId">
+            <summary>
+            The PK of the household
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BankAccount.OwnerId">
+            <summary>
+            The Owner of the bank account
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BankAccount.AccountName">
+            <summary>
+            The account name of the bank the owner input for their preferred bank
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BankAccount.Created">
+            <summary>
+            The time the bank account was created
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BankAccount.StartingBalance">
+            <summary>
+            The input starting balance of the owner's bank account
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BankAccount.CurrentBalance">
+            <summary>
+            The current balance of the owner's bank account after any transactions are preformed
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BankAccount.WarningBalance">
+            <summary>
+            The warning balance for when the account is getting low on funds
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BankAccount.IsDeleted">
+            <summary>
+            Soft delete boolean value
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BankAccount.AccountType">
+            <summary>
+            The account type of the account
+            </summary>
+        </member>
+        <member name="T:FinancialPortalAPI.Models.Budget">
+            <summary>
+            The model of the Budget for household in the financial portal
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Budget.Id">
+            <summary>
+            The FK for the Budget
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Budget.HouseholdId">
+            <summary>
+            The PK of the household
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Budget.OwnerId">
+            <summary>
+            The Owner of the bank account
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Budget.Created">
+            <summary>
+            The time the bank account was created
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Budget.BudgetName">
+            <summary>
+            The name of the budget
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Budget.CurrentAmount">
+            <summary>
+            The amount the user spent in this category 
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Budget.TargetAmount">
+            <summary>
+            The projected total of the category for the month based on the budget items
+            </summary>
+        </member>
+        <member name="T:FinancialPortalAPI.Models.BudgetItem">
+            <summary>
+            The model of Budget Item for the financial portal
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BudgetItem.Id">
+            <summary>
+            the FK for the budget item
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BudgetItem.BudgetId">
+            <summary>
+            The PK of the budget the item is tied to
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BudgetItem.Created">
+            <summary>
+            The time the budget item was created
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BudgetItem.ItemName">
+            <summary>
+            The item name of the budget item
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BudgetItem.TargetAmount">
+            <summary>
+            The target amount to spend on the item
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BudgetItem.CurrentAmount">
+            <summary>
+            The current amount spent on the item
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.BudgetItem.IsDeleted">
+            <summary>
+            Soft delete boolean value
+            </summary>
+        </member>
+        <member name="T:FinancialPortalAPI.Models.Household">
+            <summary>
+            The model for the household unit in the financial portal
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Household.Id">
+            <summary>
+            The PK of the Household
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Household.HouseholdName">
+            <summary>
+            User generated name of Household
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Household.Greeting">
+            <summary>
+            Shown to new user of the household on joining
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Household.Created">
+            <summary>
+            The time when the household was created
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Household.IsDeleted">
+            <summary>
+            Soft delete boolean value
+            </summary>
+        </member>
+        <member name="T:FinancialPortalAPI.Models.Transaction">
+            <summary>
+            The model of Transaction for the financial portal
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Transaction.Id">
+            <summary>
+            The FK for the Transaction
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Transaction.AccountId">
+            <summary>
+            The account Id the transaction is tied to
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Transaction.BudgetItemId">
+            <summary>
+            The budget item tied to the transaction
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Transaction.OwnerId">
+            <summary>
+            The owner that created the transaction
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Transaction.TransactionType">
+            <summary>
+            The transaction type for the transaction
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Transaction.Created">
+            <summary>
+            The time the transaction was created
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Transaction.Amount">
+            <summary>
+            The amount for each transaction
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Transaction.Memo">
+            <summary>
+            A note for what the transaction was for
+            </summary>
+        </member>
+        <member name="P:FinancialPortalAPI.Models.Transaction.IsDeleted">
+            <summary>
+            Soft delete boolean value
+            </summary>
+        </member>
+    </members>
+</doc>
